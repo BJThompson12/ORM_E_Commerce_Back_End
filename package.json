@@ -1,9 +1,28 @@
 {
+  "name": "orm-e-commerce-back-end",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "watch": "nodemon server.js",
+    "seed": "node seeds/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/BJThompson12/ORM_E_Commerce_Back_End"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "nodemon": "^2.0.3"
+  },
   "dependencies": {
-    "dotenv": "^16.0.3",
-    "express": "^4.18.2",
-    "mysql2": "^3.2.0",
-    "nodemon": "^2.0.22",
-    "sequelize": "^6.29.3"
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mysql2": "^2.1.0",
+    "sequelize": "^5.21.7"
   }
 }

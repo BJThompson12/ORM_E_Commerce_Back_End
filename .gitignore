@@ -1,3 +1,4 @@
 node_modules
 AC.md
 .env
+.DS_Store
