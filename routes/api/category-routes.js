@@ -2,58 +2,32 @@ const router = require('express').Router();
 const { Category, Product } = require('../../models');
 
 // The `/api/categories` endpoint
-
-router.get('/', (req, res) => {
+router.get('/', async (req, res) => {
   // find all categories
-  Category.findAll({
+  try {
+    const categoryData = await Category.findAll({
     // be sure to include its associated Products
-    include: 
-    [
-      {
-        model: Product,
-        attributes: ['id', 'product_name', 'price', 'stock', 'category_id']
-      }
-    ]
-  })
-  .then(getAllCategories => {
-    res.json(getAllCategories)
-    .status(200);
-  })
-  .catch(err => {
-    console.error(`Unexpected error encountered in get all categories route ${err}`)
-    res.status(500);
-  });
-  
-
-  // be sure to include its associated Products
-});
-
-router.get('/:id', (req, res) => {
-  // find one category by its `id` value
-  Category.findOne({
-    where: {
-      id: req.params.id
-    },
-     // be sure to include its associated Products
-      include: 
-      [
-        {
-          model:  Product,
-          attributes: ['id', 'product_name', 'price', 'stock', 'category_id'],
-        }
-      ]
-  })
-    .then(getCategoryById => {
-      res.json(getCategoryById)
-      .status(200);
-    })
-    .catch(err => {
-      console.error(`Unexpected error encountered in get category by id route ${err}`);
-      res.status(500)
+       include: [{ model: Product}],
     });
-});
-  // be sure to include its associated Products
+    res.status(200).json(categoryData);
+    console.log('Find All SUCCESS');
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  });
 
+router.get('/:id', async (req, res) => {
+  // find one category by its `id` value
+  try {
+    const categoryData = await Category.findByPk(req.params.id,{
+    // be sure to include its associated Products
+       include: [{ model: Product}],
+    });
+    res.status(200).json(categoryData);
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  });
 
 router.post('/', (req, res) => {
   // create a new category
