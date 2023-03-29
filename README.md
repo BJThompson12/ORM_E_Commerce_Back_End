@@ -15,7 +15,7 @@
  - [Recordings](#Recordings)
  - [Acknowledgement](#Acknowledgement)
   ## Frameworks 🧰
-  Node JS, MySQL, figlet, and inquirer.
+  Node JS, MySQL and Sequelize.
   ## Installation 🛠️ 
   `npm init`
 
